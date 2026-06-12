@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var keys = [
+          'finanzas-theme',
+          'salario-neto-theme',
+          'hipotecas-theme',
+          'calculadora-interes-compuesto-theme',
+        ];
+        var storedTheme = null;
+        try {
+          for (var i = 0; i < keys.length; i++) {
+            var value = localStorage.getItem(keys[i]);
+            if (value === 'dark' || value === 'light') {
+              storedTheme = value;
+              break;
+            }
+          }
+        } catch (e) {}
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = storedTheme || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadoras financieras — Salario, hipoteca e interés compuesto</title>
+    <meta
+      name="description"
+      content="Suite de calculadoras financieras gratuitas: salario neto en España, simulador de hipoteca e interés compuesto con aportaciones periódicas."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://breimato.es/finanzas/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Calculadoras financieras" />
+    <meta
+      property="og:description"
+      content="Herramientas para calcular salario neto, hipoteca e interés compuesto en España."
+    />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:url" content="https://breimato.es/finanzas/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Calculadoras financieras",
+        "url": "https://breimato.es/finanzas/",
+        "inLanguage": "es",
+        "description": "Suite de calculadoras financieras para salario neto, hipoteca e interés compuesto"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Salario neto",
+            "url": "https://breimato.es/salario-neto/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Hipoteca",
+            "url": "https://breimato.es/hipoteca/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Interés compuesto",
+            "url": "https://breimato.es/calculadora-intereses/"
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root">
+      <noscript>
+        <p style="max-width: 40rem; margin: 2rem auto; padding: 0 1rem; font-family: system-ui, sans-serif">
+          Activa JavaScript para ver las calculadoras financieras.
+        </p>
+      </noscript>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
